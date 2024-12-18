@@ -1,51 +1,250 @@
-```html
 <!DOCTYPE html>
-<html lang="en-US">
+<html lang="en">
 <head>
-    <title>Creating Marketing Plan HTML Template Live Demo</title>
-    <meta name="viewport" content="initial-scale=1.0,maximum-scale=1.0,user-scalable=no,width=device-width">
-    <link href="//capp.nicepage.com/main-libs.css" rel="stylesheet" />
-    <link href="https://fonts.googleapis.com/css?family=Roboto|Open+Sans:200,300,400,700,800,900" rel="preload" as="font" />
-    <script src="//capp.nicepage.com/main-libs.js"></script>
-    <script>
-        window.isAuthenticated = 0;
-        window.clientUser Id = 0;
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>работа усмана</title>
+  <style>
+    body {
+      margin: 0;
+      overflow: hidden;
+      background: linear-gradient(to bottom, #000000 60%, #ff00c8 40%);
+    }
 
-        function sendAnalyticsData(eventType, props) {
-            $.ajax({
-                type: 'POST',
-                url: '/Feedback/SendAdsLog',
-                contentType: 'application/json; charset=utf-8',
-                data: JSON.stringify({ userToken: window.clientUser Id, data: props }),
-                dataType: 'json'
-            });
-        }
+    .background, .side-background {
+      position: absolute;
+      top: 0;
+      left: 0;
+      right: 0;
+      height: 100%;
+    }
 
-        document.addEventListener('DOMContentLoaded', function () {
-            sendAnalyticsData('Page View', { page: window.location.pathname });
-        });
-    </script>
-    <style>
-        body, html { height: 100%; margin: 0; }
-        .page-preview { height: 100%; }
-        .page-preview-header { background: #f2f2f2; height: 70px; text-align: center; }
-        .page-preview-body { height: calc(100% - 70px); overflow: hidden; }
-        .page-preview-body iframe { border: none; height: 100%; width: 100%; }
-    </style>
+    .background {
+      background: linear-gradient(to top, #5800fc 0%, #aaf726 100%);
+      z-index: -1;
+    }
+
+    .side-background {
+      background: linear-gradient(to right, #02e6e6 20%, #93e605 80%);
+      z-index: -2;
+    }
+
+    .road {
+      position: absolute;
+      bottom: 0;
+      width: 100%;
+      height: 200px;
+      background-color: #555;
+    }
+
+    .road-line {
+      position: absolute;
+      bottom: 100px;
+      width: 100%;
+      height: 10px;
+      background: repeating-linear-gradient(to right, rgb(209, 57, 57) 0, rgb(240, 153, 153) 50px, transparent 50px, transparent 100px);
+    }
+
+    .car {
+      position: absolute;
+      bottom: 120px;
+      left: -450px;
+      width: 450px;
+      height: 200px;
+      animation: drive 5s linear forwards;
+    }
+
+    .car div {
+      position: absolute;
+      background-color: black;
+      border-radius: 5px;
+    }
+
+    .car .body { width: 450px; height: 120px; box-shadow: 0 4px 10px rgba(255, 0, 0, 0.5); }
+    .car .roof { top: -50px; left: 30px; width: 390px; height: 50px; background-color: rgb(71, 8, 8); border-radius: 5px; }
+    
+    /* Сделаем стекла квадратными, убрав border-radius */
+    .car .windshield, .car .side-window {
+      border-radius: 0; /* Убираем закругления */
+    }
+
+    .car .windshield { top: -40px; left: 40px; width: 130px; height: 40px; background-color: lightblue; }
+    .car .side-window { top: -40px; width: 100px; height: 40px; background-color: lightblue; }
+    .car .side-window.front { left: 180px; }
+    .car .side-window.rear { left: 290px; }
+
+    .car .door { top: 20px; width: 100px; height: 80px; background-color: #e3ff42; border: 2px solid #f70000; }
+    .car .door.front { left: 150px; }
+    .car .door.rear { left: 260px; }
+    .car .headlight { top: 30px; width: 20px; height: 20px; background-color: yellow; border-radius: 50%; }
+    .car .headlight.left { left: 10px; }
+    .car .headlight.right { right: 10px; }
+
+    .car .grille { top: 60px; left: 20px; width: 70px; height: 80px; display: flex; justify-content: space-between; }
+    .car .grille div { width: 10px; height: 30px; background-color: silver; }
+
+    .car .wheel { bottom: -30px; width: 90px; height: 90px; background-color: rgb(65, 184, 18); border-radius: 50%; border: 6px solid #333; }
+    .car .wheel.front { left: 40px; }
+    .car .wheel.back { right: 40px; }
+    .car .wheel::after { content: ''; position: absolute; top: 20px; left: 20px; width: 50px; height: 50px; background-color: silver; border-radius: 50%; }
+
+    @keyframes drive { to { left: calc(100% - 500px); } }
+    body{
+    background: #000;
+  }
+  .snowflake {
+      color: #fff;
+      font-size: 1em;
+      font-family: Arial;
+      text-shadow: 0 0 1px #000;
+      position: fixed;
+      top: -10%;
+      z-index: 9999;
+      user-select: none;
+      cursor: default;
+      animation-name: snowflakes-fall, snowflakes-shake;
+      animation-duration: 10s, 3s;
+      animation-timing-function: linear, ease-in-out;
+      animation-iteration-count: infinite, infinite;
+      animation-play-state: running, running;
+  }
+  
+  .snowflake:nth-of-type(0) {
+      left: 1%;
+      animation-delay: 0s, 0s;
+  }
+  
+  .snowflake:nth-of-type(1) {
+      left: 10%;
+      animation-delay: 1s, 1s;
+  }
+  
+  .snowflake:nth-of-type(2) {
+      left: 20%;
+      animation-delay: 6s, .5s;
+  }
+  
+  .snowflake:nth-of-type(3) {
+      left: 30%;
+      animation-delay: 4s, 2s;
+  }
+  
+  .snowflake:nth-of-type(4) {
+      left: 40%;
+      animation-delay: 2s, 2s;
+  }
+  
+  .snowflake:nth-of-type(5) {
+      left: 50%;
+      animation-delay: 8s, 3s;
+  }
+  
+  .snowflake:nth-of-type(6) {
+      left: 60%;
+      animation-delay: 6s, 2s;
+  }
+  
+  .snowflake:nth-of-type(7) {
+      left: 70%;
+      animation-delay: 2.5s, 1s;
+  }
+  
+  .snowflake:nth-of-type(8) {
+      left: 80%;
+      animation-delay: 1s, 0s;
+  }
+  
+  .snowflake:nth-of-type(9) {
+      left: 90%;
+      animation-delay: 3s, 1.5s;
+  }
+  
+  @keyframes snowflakes-fall {
+      0% {
+          top: -10%;
+      }
+      100% {
+          top: 100%;
+      }
+  }
+  
+  @keyframes snowflakes-shake {
+      0% {
+          transform: translateX(0px);
+          -webkit-transform: translateX(0px);
+          -moz-transform: translateX(0px);
+          -o-transform: translateX(0px);
+          -ms-transform: translateX(0px);
+      }
+      50% {
+          transform: translateX(80px);
+          -webkit-transform: translateX(80px);
+          -moz-transform: translateX(80px);
+          -o-transform: translateX(80px);
+          -ms-transform: translateX(80px);
+      }
+      100% {
+          transform: translateX(0px);
+          -webkit-transform: translateX(0px);
+          -moz-transform: translateX(0px);
+          -o-transform: translateX(0px);
+          -ms-transform: translateX(0px);
+      }
+  }
+  </style>
 </head>
 <body>
-    <div class="page-preview">
-        <div class="page-preview-header">
-            <a href="#" id="previewDesktopBtn" data-preview-size="100%">Desktop</a>
-            <a href="#" id="previewLaptopBtn" data-preview-size="1040px">Laptop</a>
-            <a href="#" id="previewTabletBtn" data-preview-size="820px">Tablet</a>
-            <a href="#" id="previewPhoneBtn" data-preview-size="440px">Phone</a>
-            <a class="close" href="/"><img alt="Close" src="//csite.nicepage.com/Images/icon-close.png"></a>
+    <div class="snowflakes" aria-hidden="true">
+        <div class="snowflake">
+            ❅
         </div>
-        <div class="page-preview-body">
-            <iframe id="livePreviewFrame" src="https://website2907646.nicepage.io/Home.html"></iframe>
+        <div class="snowflake">
+            ❅
         </div>
+        <div class="snowflake">
+            ❆
+        </div>
+        <div class="snowflake">
+            ❄
+        </div>
+        <div class="snowflake">
+            ❅
+        </div>
+        <div class="snowflake">
+            ❆
+        </div>
+        <div class="snowflake">
+            ❄
+        </div>
+        <div class="snowflake">
+            ❅
+        </div>
+        <div class="snowflake">
+            ❆
+        </div>
+        <div class="snowflake">
+            ❄
+        </div>
+  <div class="background"></div>
+  <div class="side-background"></div>
+  <div class="road">
+    <div class="road-line"></div>
+  </div>
+  <div class="car">
+    <div class="body"></div>
+    <div class="roof"></div>
+    <div class="windshield"></div>
+    <div class="side-window front"></div>
+    <div class="side-window rear"></div>
+    <div class="door front"></div>
+    <div class="door rear"></div>
+    <div class="headlight left"></div>
+    <div class="headlight right"></div>
+    <div class="grille">
+      <div></div><div></div><div></div>
     </div>
+    <div class="wheel front"></div>
+    <div class="wheel back"></div>
+  </div>
 </body>
 </html>
-```
